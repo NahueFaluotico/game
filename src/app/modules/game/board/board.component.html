@@ -1,0 +1,136 @@
+<ion-content>
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>You turn</ion-title>
+      <ion-buttons slot="end">
+        <ion-button (click)="togglePause()" shape="round">
+          <ion-icon slot="icon-only" [name]="isPaused ? 'play' : 'pause'"></ion-icon>
+        </ion-button>
+        <ion-button id="trigger-button">
+          <ion-icon slot="icon-only" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  <ion-card color="primary">
+    <ion-card-header>
+      <ion-card-subtitle>Duo</ion-card-subtitle>
+      <ion-card-title>Adivina el duo</ion-card-title>
+    </ion-card-header>
+    <!-- <ion-card-content>
+      Awesome content
+    </ion-card-content> -->
+  </ion-card>
+  <ion-progress-bar [value]="((counter * 100) / turnInterval) / 100" [color]="((counter * 100) / turnInterval) < 50 ? ((counter * 100) / turnInterval) < 25 ? 'danger' : 'warning' : 'primary'"></ion-progress-bar>
+  <div class="board">
+    <ion-title class="ion-margin-bottom">Options</ion-title>
+    <ion-button (click)="onClick()" expand="block" fill="outline" color="success" shape="round">
+      Option A
+    </ion-button>
+    <ion-button (click)="onClick()" expand="block" fill="outline" color="success" shape="round">
+      Option B
+    </ion-button>
+    <ion-button (click)="onClick()" expand="block" fill="outline" color="success" shape="round">
+      Option C
+    </ion-button>
+    <ion-button (click)="onClick()" expand="block" fill="outline" color="success" shape="round">
+      Option D
+    </ion-button>
+  </div>
+  <ion-row class="footer">
+    <ion-col size="12">
+      <ion-row>
+        <ion-col size="12">
+          <ion-fab vertical="center" horizontal="end">
+            <ion-fab-button><ion-icon name="flame"></ion-icon></ion-fab-button>
+            <ion-fab-list side="start">
+              <ion-fab-button><ion-icon name="logo-ionic"></ion-icon></ion-fab-button>
+              <ion-fab-button><ion-icon name="logo-angular"></ion-icon></ion-fab-button>
+            </ion-fab-list>
+          </ion-fab>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <ion-title>Your Cards</ion-title>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <swiper [config]="slideOpts" [effect]="'fade'">
+            <ng-template swiperSlide>
+              <ion-card>
+                <ion-card-header>
+                  <ion-card-subtitle>Duo</ion-card-subtitle>
+                  <ion-card-title>Adivina el duo</ion-card-title>
+                </ion-card-header>
+              </ion-card>
+            </ng-template>
+            <ng-template swiperSlide>
+              <ion-card>
+                <ion-card-header>
+                  <ion-card-subtitle>Question</ion-card-subtitle>
+                  <ion-card-title>Que es eso?</ion-card-title>
+                </ion-card-header>
+              </ion-card>
+            </ng-template>
+            <ng-template swiperSlide>
+              <ion-card>
+                <ion-card-header>
+                  <ion-card-subtitle>Chanange</ion-card-subtitle>
+                  <ion-card-title>Eso es queso</ion-card-title>
+                </ion-card-header>
+              </ion-card>
+            </ng-template>
+          </swiper>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+</ion-content>
+
+<ion-popover trigger="trigger-button">
+  <ng-template>
+    <ion-content>
+      <ion-list>
+        <ion-item [button]="true" [detail]="false" (click)="openPlayerList()">
+          <ion-icon slot="start" name="people"></ion-icon>
+          <ion-label>Players</ion-label>
+        </ion-item>
+        <ion-item [button]="true" [detail]="false">
+          <ion-icon slot="start" name="exit"></ion-icon>
+          <ion-label>Leave game</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ng-template>
+</ion-popover>
+
+<!-- Card Modal -->
+<ion-modal
+  [isOpen]="playerListModalIsOpen"
+  [swipeToClose]="true"
+>
+  <ng-template>
+    <ion-content>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Players</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="closePlayerList()">
+              <ion-icon slot="icon-only" name="close"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-list>
+        <ion-item>
+          <ion-avatar slot="start">
+            <img [src]="'https://w7.pngwing.com/pngs/340/946/png-transparent-avatar-user-computer-icons-software-developer-avatar-child-face-heroes-thumbnail.png'" />
+          </ion-avatar>
+          <ion-label>Item Avatar</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ng-template>
+</ion-modal>

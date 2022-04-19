@@ -1,0 +1,23 @@
+<ion-content>
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Login</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <form [formGroup]="credentials" (ngSubmit)="signIn()">
+    <ion-item>
+      <ion-label position="floating">E-Mail <ion-text color="danger">*</ion-text></ion-label>
+      <ion-input required formControlName="email" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Password <ion-text color="danger">*</ion-text></ion-label>
+      <ion-input required formControlName="password" type="text"></ion-input>
+    </ion-item>
+    <ion-button block color="primary" expand="block" type="submit" [disabled]="credentials.invalid">
+      Login
+    </ion-button>
+  </form>
+  <ion-button block color="primary" expand="block" (click)="signUp()">
+    Sign up
+  </ion-button>
+</ion-content>

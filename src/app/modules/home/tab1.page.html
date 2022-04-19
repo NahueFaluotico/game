@@ -1,0 +1,74 @@
+<!-- <ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Lobby
+    </ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content [fullscreen]="true">
+  <!-- <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Lobby</ion-title>
+    </ion-toolbar>
+  </ion-header> -->
+  <swiper>
+    <ng-template swiperSlide>
+      <ion-content>
+        <ion-row class="ion-margin-vertical">
+          <ion-col size="12">
+            <ion-card>
+              <ion-card-header>
+                <ion-card-title class="ion-float-left">Search game</ion-card-title>
+              </ion-card-header>
+              <ion-card-content>
+                <ion-input class="ion-margin-vertical" autofocus="true" type="text" placeholder="Game code"></ion-input>
+                <ion-button (click)="onClick()" expand="block" fill="clear" shape="round">
+                  Search
+                </ion-button>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <ion-list>
+              <ion-list-header>
+                <ion-label>Friend's game</ion-label>
+                <ion-button>Refresh</ion-button>
+              </ion-list-header>
+              <ion-item>
+                <ion-avatar slot="start">
+                  <img [src]="'https://w7.pngwing.com/pngs/340/946/png-transparent-avatar-user-computer-icons-software-developer-avatar-child-face-heroes-thumbnail.png'" />
+                </ion-avatar>
+                <ion-label>Item Avatar</ion-label>
+              </ion-item>
+            </ion-list>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <ion-button (click)="openGame()" size="block" expand="block" fill="clear" shape="round">
+              Open game
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-content>
+    </ng-template>
+    <ng-template swiperSlide>
+      <ion-content>
+        <div class="ion-margin-vertical ion-margin-horizontal">
+          <ion-input type="number" placeholder="Turn duration"></ion-input>
+          <ion-select placeholder="Select deck" mode="ios">
+            <ion-select-option value="normal">Normal</ion-select-option>
+            <ion-select-option value="hard">Hard</ion-select-option>
+            <ion-select-option value="extreme">Extreme</ion-select-option>
+          </ion-select>
+          <ion-button (click)="hostGame()" expand="block" shape="round">
+            Host new game
+          </ion-button>
+        </div>
+      </ion-content>
+    </ng-template>
+  </swiper>
+</ion-content>
